@@ -15,10 +15,11 @@ public class Date {
       m_year = year;
    }
 
-   public void setDate(int month, int day, int year) {
+   public boolean setDate(int month, int day, int year) {
       m_month = month;
       m_day = day;
       m_year = year;
+      return true;
    }
 
    public int getMonth() {
@@ -60,5 +61,9 @@ public class Date {
       }
       else
          return -1;
+   }
+
+   public boolean isAnniversary(Date today) {
+      return today.getDay() == m_day && today.getMonth() == m_month;
    }
 }
