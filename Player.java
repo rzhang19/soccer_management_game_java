@@ -10,6 +10,7 @@ public abstract class Player {
    private static final int MAX_ATTRIBUTE = 99;
 
    public final static enum POSITION { ATT, MID, DEF, GK, NONE; }
+   public final static enum FREE_AGENCY = "Free Agents";
 
    private int m_id;
    private String m_firstName = "";
