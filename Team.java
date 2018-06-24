@@ -2,6 +2,7 @@ public abstract class Team {
    private static int idCount = 0;
 
    private static final int MAX_PLAYERS = 99;
+   private static final int MIN_PLAYERS = 23;
 
    private int m_id;
    private String m_name;
@@ -9,20 +10,32 @@ public abstract class Team {
    private Player[] m_players;
    private int m_size;
 
+   private int m_overall;
+
    public Team() {
       m_id = idCount;
       idCount++;
       m_size = 0;
+      m_overall = -1;
    }
 
    public Team(String name) {
       m_name = name;
       idCount++;
       m_size = 0;
+      m_overall = -1;
+   }
+
+   public boolean isValid() {
+      return m_size >= MIN_PLAYERS && m_size < MAX_PLAYERS;
    }
 
    public int getID() {
       return m_id;
+   }
+
+   public boolean setName(String name) {
+      m_name = name;
    }
 
    public String getName() {
@@ -71,5 +84,15 @@ public abstract class Team {
 
    public int getSize() {
       return m_size;
+   }
+
+   private boolean calculateOverall() {
+      sum = 0;
+      for (int x = 0; x < m_size; x++) {
+         sum += m_players[x].getOverall();
+      }
+
+      m_overall = sum / m_size;
+      return true;
    }
 }

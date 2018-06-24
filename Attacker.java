@@ -1,14 +1,14 @@
 public class Attacker extends Player {
-   private static final int SHO_WEIGHT = 0;
-   private static final int ANT_WEIGHT = 0;
-   private static final int BCT_WEIGHT = 0;
-   private static final int PAS_WEIGHT = 0;
-   private static final int TAC_WEIGHT = 0;
-   private static final int INT_WEIGHT = 0;
-   private static final int GKR_WEIGHT = 0;
-   private static final int GKB_WEIGHT = 0;
-   private static final int SPE_WEIGHT = 0;
-   private static final int STA_WEIGHT = 0;
+   private static final int SHO_WEIGHT = 5;
+   private static final int ANT_WEIGHT = 5;
+   private static final int BCT_WEIGHT = 3;
+   private static final int PAS_WEIGHT = 3;
+   private static final int TAC_WEIGHT = 2;
+   private static final int INT_WEIGHT = 1;
+   private static final int GKR_WEIGHT = 1;
+   private static final int GKB_WEIGHT = 1;
+   private static final int SPE_WEIGHT = 4;
+   private static final int STA_WEIGHT = 3;
    private static final int SUM = SHO_WEIGHT + ANT_WEIGHT + BCT_WEIGHT + PAS_WEIGHT + TAC_WEIGHT + INT_WEIGHT + GKR_WEIGHT +
                                  GKB_WEIGHT + SPE_WEIGHT + STA_WEIGHT;
 
