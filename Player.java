@@ -1,5 +1,6 @@
 public abstract class Player {
    private static int id_count = 0;
+
    private static final int MIN_JERSEY = 0;
    private static final int MAX_JERSEY = 99;
    private static final int MIN_WAGE = 0;
@@ -58,6 +59,10 @@ public abstract class Player {
 
    public int getID() {
       return m_id;
+   }
+
+   public boolean equals(Player other) {
+      return m_id == other.getID();
    }
 
    public boolean setFirstName(String name) {
