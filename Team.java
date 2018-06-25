@@ -19,6 +19,8 @@ public abstract class Team {
    private int m_totalDraws;
    private int m_totalLosses;
    private int m_totalCupWins;
+   private int m_totalGoalsFor;
+   private int m_totalGoalsAgainst;
 
    public Team() {
       m_name = "";
@@ -29,6 +31,11 @@ public abstract class Team {
       m_overall = -1;
 
       m_totalWins = 0;
+      m_totalDraws = 0;
+      m_totalLosses = 0;
+      m_totalCupWins = 0;
+      m_totalGoalsFor = 0;
+      m_totalGoalsAgainst = 0;
    }
 
    public Team(String name) {
@@ -40,6 +47,11 @@ public abstract class Team {
       m_overall = -1;
 
       m_totalWins = 0;
+      m_totalDraws = 0;
+      m_totalLosses = 0;
+      m_totalCupWins = 0;
+      m_totalGoalsFor = 0;
+      m_totalGoalsAgainst = 0;
    }
 
    public Team(String name, String code) {
@@ -63,6 +75,7 @@ public abstract class Team {
 
    public boolean setName(String name) {
       m_name = name;
+      return true;
    }
 
    public String getName() {
@@ -70,7 +83,11 @@ public abstract class Team {
    }
 
    public boolean setCode(String code) {
+      if (code.length() > 3)
+         return false;
+
       m_code = code;
+      return true;
    }
 
    public String getCode() {
