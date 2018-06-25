@@ -9,8 +9,8 @@ public abstract class Player {
    private static final int MIN_ATTRIBUTE = 0;
    private static final int MAX_ATTRIBUTE = 99;
 
-   public final static enum POSITION { ATT, MID, DEF, GK, NONE; }
-   public final static enum FREE_AGENCY = "Free Agents";
+   public static final enum POSITION { ATT, MID, DEF, GK, NONE; }
+   public static final String FREE_AGENCY = "Free Agents";
 
    private int m_id;
    private String m_firstName = "";
