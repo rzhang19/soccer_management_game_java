@@ -137,6 +137,11 @@ public abstract class Player {
       return m_birthday;
    }
 
+   public boolean calculateAge(Date current) {
+      m_age = m_birthday.getAge(current);
+      return true;
+   }
+
    public int getAge(Date current) {
       m_age = m_birthday.getAge(current);
       return m_age;
