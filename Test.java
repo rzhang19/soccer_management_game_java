@@ -7,8 +7,8 @@ public class Test {
       Team team1 = new ClubTeam("Bayern Munich", "BAY", "Bundesliga", "Europe");
       Team team2 = new ClubTeam("Borussia Dortmund", "DOR", "Bundesliga", "Europe");
 
-      Team team3 = new NationalTeam("Germany", "GER", "Europe");
-      Team team4 = new NationalTeam("Mexico", "MEX", "North America");
+      Team team3 = new NationalTeam("Germany", "GER", "Europe", "German");
+      Team team4 = new NationalTeam("Mexico", "MEX", "North America", "Mexican");
 
       // shooting, anticipation, ball control, passing, tackling, interceptions, reactions, blocking, speed, stamina
       Player[] m_players1 = { new Goalkeeper("Jan","Mueller","",  new Date(06,07,1990),1,team3,20,75,70,80,50,25,90,95,10,50),
@@ -58,5 +58,7 @@ public class Test {
          if(!(team1.addPlayer(m_players2[x])))
             System.err.println("Error adding player to team");
       }
+
+      
    }
 }

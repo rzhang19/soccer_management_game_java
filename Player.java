@@ -207,6 +207,10 @@ public abstract class Player {
       return m_nationalTeam;
    }
 
+   public String getNationality() {
+      return m_nationalTeam.getNationality();
+   }
+
    private abstract boolean calculateOverall();
 
    public int getOverall() {
