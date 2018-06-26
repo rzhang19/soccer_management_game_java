@@ -60,7 +60,9 @@ public class Attacker extends Player {
 
    /*
     * getRole();
-    * @return - ROLE enum of Player, notably Attacker
+    * Returns the ROLE of this Player, hardcoded as Attacker
+
+    * @return - ROLE enum of Player
     */
    public ROLE getRole() {
       return Player.ROLE.ATT;
