@@ -1,3 +1,11 @@
+/*
+ * ClubTeam.java
+ * Robin Zhang, 2018
+ * Soccer Management Game, Java
+ *
+ * ClubTeam class, child of Team class
+ */
+
 public class ClubTeam extends Team {
    // String representation of league
    // when added League.java, will change this to League instance

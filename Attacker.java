@@ -1,3 +1,11 @@
+/*
+ * Attacker.java
+ * Robin Zhang, 2018
+ * Soccer Management Game, Java
+ *
+ * Attacker class, child of Player class
+ */
+
 public class Attacker extends Player {
    // weight of attributes on overall, specific attribute listed
    private static final int SHO_WEIGHT = 5;  // shooting weight
