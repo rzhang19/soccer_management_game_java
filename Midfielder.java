@@ -18,7 +18,18 @@ public class Midfielder extends Player {
 
    public Midfielder(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
-      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam);
+      Midfielder(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
+         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+   }
+
+   public Midfielder(String firstName, String lastName, String nickName, Date birthday,
+                  int jerseyNum, Team nationalTeam,
+                  int shooting, int anticipation, int ballControl, int passing,
+                  int tackling, int interceptions, int gkReactions, int gkBlocking,
+                  int speed, int stamina) {
+      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
+         shooting, anticipation, ballControl, passing, tackling, interceptions,
+         gkReactions, gkBlocking, speed, stamina);
    }
 
    public ROLE getRole() {
