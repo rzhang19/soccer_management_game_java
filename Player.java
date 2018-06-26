@@ -185,6 +185,10 @@ public abstract class Player {
       return m_contractLength;
    }
 
+   public boolean signContract(int contractLength, int wage) {
+      return setContractLength(contractLength) && setWage(wage);
+   }
+
    public boolean setClubTeam(Team clubTeam) {
       m_clubTeam = clubTeam;
       return true;
