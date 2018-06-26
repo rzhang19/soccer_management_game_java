@@ -13,12 +13,16 @@ public class Goalkeeper extends Player {
                                  GKB_WEIGHT + SPE_WEIGHT + STA_WEIGHT;
 
    public Goalkeeper() {
-      super();
+      Goalkeeper("", "", "", new Date(), 0, new NationalTeam());
    }
 
-   public Goalkeeper(String firstName, String lastName, String nickName, Date birthday, POSITION position,
+   public Goalkeeper(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
-      super(firstName, lastName, nickName, birthday, GK, jerseyNum, nationalTeam);
+      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam);
+   }
+
+   public ROLE getRole() {
+      return GK;
    }
 
    private boolean calculateOverall() {

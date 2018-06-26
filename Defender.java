@@ -13,12 +13,16 @@ public class Defender extends Player {
                                  GKB_WEIGHT + SPE_WEIGHT + STA_WEIGHT;
 
    public Defender() {
-      super();
+      Defender("", "", "", new Date(), 0, new NationalTeam());
    }
 
-   public Defender(String firstName, String lastName, String nickName, Date birthday, POSITION position,
+   public Defender(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
-      super(firstName, lastName, nickName, birthday, DEF, jerseyNum, nationalTeam);
+      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam);
+   }
+
+   public ROLE getRole() {
+      return DEF;
    }
 
    private boolean calculateOverall() {

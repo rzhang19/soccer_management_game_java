@@ -13,12 +13,16 @@ public class Midfielder extends Player {
                                  GKB_WEIGHT + SPE_WEIGHT + STA_WEIGHT;
 
    public Midfielder() {
-      super();
+      new Midfielder("", "", "", new Date(), 0, new NationalTeam());
    }
 
-   public Midfielder(String firstName, String lastName, String nickName, Date birthday, POSITION position,
+   public Midfielder(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
-      super(firstName, lastName, nickName, birthday, MID, jerseyNum, nationalTeam);
+      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam);
+   }
+
+   public ROLE getRole() {
+      return MID;
    }
 
    private boolean calculateOverall() {

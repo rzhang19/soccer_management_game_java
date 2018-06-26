@@ -13,12 +13,16 @@ public class Attacker extends Player {
                                  GKB_WEIGHT + SPE_WEIGHT + STA_WEIGHT;
 
    public Attacker() {
-      super();
+      Attacker("", "", "", new Date(), 0, new NationalTeam());
    }
 
-   public Attacker(String firstName, String lastName, String nickName, Date birthday, POSITION position,
+   public Attacker(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
-      super(firstName, lastName, nickName, birthday, ATT, jerseyNum, nationalTeam);
+      super(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam);
+   }
+
+   public ROLE getRole() {
+      return ATT;
    }
 
    private boolean calculateOverall() {
