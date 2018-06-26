@@ -13,37 +13,11 @@ public class ClubTeam extends Team {
    private int m_leagueGoalsAgainst;
 
    public ClubTeam() {
-      super();
-
-      m_league = "";
-      m_continent = "";
-
-      m_transferBudget = -1;
-      m_wageBudget = -1;
-
-      m_leagueWins = 0;
-      m_leagueDraws = 0;
-      m_leagueLosses = 0;
-      m_leaguePoints = 0;
-      m_leagueGoalsFor = 0;
-      m_leagueGoalsAgainst = 0;
+      ClubTeam("");
    }
 
    public ClubTeam(String name) {
-      super(name);
-
-      m_league = "";
-      m_continent = "";
-
-      m_transferBudget = -1;
-      m_wageBudget = -1;
-
-      m_leagueWins = 0;
-      m_leagueDraws = 0;
-      m_leagueLosses = 0;
-      m_leaguePoints = 0;
-      m_leagueGoalsFor = 0;
-      m_leagueGoalsAgainst = 0;
+      ClubTeam(name, "");
    }
 
    public ClubTeam(String name, String code) {
