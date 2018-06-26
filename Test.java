@@ -3,7 +3,7 @@ import java.util.Random;
 public class Test {
    public static void main (String[] args) {
       Random num = new Random();
-
+      
       Team team1 = new ClubTeam("Bayern Munich", "BAY", "Bundesliga", "Europe");
       Team team2 = new ClubTeam("Borussia Dortmund", "DOR", "Bundesliga", "Europe");
 
@@ -55,10 +55,11 @@ public class Test {
          if(!(m_players2[x].signContract(5,10)))
             System.err.println("Error signing contract");
 
-         if(!(team1.addPlayer(m_players2[x])))
+         if(!(team2.addPlayer(m_players2[x])))
             System.err.println("Error adding player to team");
       }
 
-      
+      System.out.println((team1.getPlayers())[0].getFullName() + " is " + (team1.getPlayers())[0].getNationality());
+      System.out.println((team2.getPlayers())[0].getFullName() + " is " + (team2.getPlayers())[0].getNationality());
    }
 }
