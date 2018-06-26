@@ -9,50 +9,73 @@ public abstract class Player {
    private static final int MIN_ATTRIBUTE = 0;
    private static final int MAX_ATTRIBUTE = 99;
 
-   public static final enum POSITION { ATT, MID, DEF, GK, NONE; }
+   public static final enum ROLE { ATT, MID, DEF, GK, NONE; }
    public static final String FREE_AGENCY = "Free Agents";
 
    private int m_id;
-   private String m_firstName = "";
-   private String m_lastName = "";
-   private String m_nickName = "";
+   private String m_firstName;
+   private String m_lastName;
+   private String m_nickName;
    private Date m_birthday;
-   private int m_age = -1;
+   private int m_age;
 
-   private POSITION m_position = NONE;
-   private int m_jerseyNum = 0;
-   private int m_wage = 0;;
-   private int m_contractLength = 0;
+   private int m_jerseyNum;
+   private int m_wage;
+   private int m_contractLength;
+   private int m_value;
 
-   private Team m_clubTeam = NULL;
-   private Team m_nationalTeam = NULL;
+   private Team m_clubTeam;
+   private Team m_nationalTeam;
 
-   private int m_overall = 0;
-   private int m_shooting = 0;
-   private int m_anticipation = 0;
-   private int m_ballControl = 0;
-   private int m_passing = 0;
-   private int m_tackling = 0;
-   private int m_interceptions = 0;
-   private int m_gkReactions = 0;
-   private int m_gkBlocking = 0;
-   private int m_speed = 0;
-   private int m_stamina = 0;
+   private int m_overall;
+   private int m_shooting;
+   private int m_anticipation;
+   private int m_ballControl;
+   private int m_passing;
+   private int m_tackling;
+   private int m_interceptions;
+   private int m_gkReactions;
+   private int m_gkBlocking;
+   private int m_speed;
+   private int m_stamina;
 
    public Player() {
-      m_id = id_count;
-      id_count++;
+      Player("", "", "", new Date(), 0, new NationalTeam());
    }
 
-   public Player(String firstName, String lastName, String nickName, Date birthday, POSITION position,
+   public Player(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
+      Player(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
+         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+   }
+
+   public Player(String firstName, String lastName, String nickName, Date birthday,
+                  int jerseyNum, Team nationalTeam,
+                  int shooting, int anticipation, int ballControl, int passing,
+                  int tackling, int interceptions, int gkReactions, int gkBlocking,
+                  int speed, int stamina) {
       m_firstName = firstName;
       m_lastName = lastName;
       m_nickName = nickName;
       m_birthday = birthday;
-      m_position = position;
       m_jerseyNum = jerseyNum;
       m_nationalTeam = nationalTeam;
+
+      m_age = -1;
+      m_wage = 0;
+      m_contractLength = 0;
+      m_clubTeam = NULL;
+
+      m_shooting = shootingl
+      m_anticipation = anticipation;
+      m_ballControl = ballControl;
+      m_passing = passing;
+      m_tackling = tackling;
+      m_interceptions = interceptions;
+      m_gkReactions = gkReactions;
+      m_gkBlocking = gkBlocking;
+      m_speed = speed;
+      m_stamina = stamina;
 
       m_id = id_count;
       id_count++;
@@ -118,6 +141,8 @@ public abstract class Player {
       m_age = m_birthday.getAge(current);
       return m_age;
    }
+
+   public ROLE getRole();
 
    public boolean setJerseyNum(int jerseyNum) {
       if (jerseyNum < MIN_JERSEY || jerseyNum > MAX_JERSEY)
