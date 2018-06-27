@@ -1,3 +1,11 @@
+/*
+ * Test.cpp
+ * Robin Zhang, 2018
+ * Soccer Management Game, Java
+ *
+ * Test is the file used for main testing
+ */
+
 import java.util.Random;
 
 public class Test {
