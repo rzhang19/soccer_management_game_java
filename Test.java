@@ -2,11 +2,13 @@ import java.util.Random;
 
 public class Test {
    public static void main (String[] args) {
-      Random num = new Random();
-      
+      //Random num = new Random(); // random number generator
+
+      // create two club teams
       Team team1 = new ClubTeam("Bayern Munich", "BAY", "Bundesliga", "Europe");
       Team team2 = new ClubTeam("Borussia Dortmund", "DOR", "Bundesliga", "Europe");
 
+      // create two national teams to keep track of nationality
       Team team3 = new NationalTeam("Germany", "GER", "Europe", "German");
       Team team4 = new NationalTeam("Mexico", "MEX", "North America", "Mexican");
 
@@ -35,15 +37,19 @@ public class Test {
                               new Midfielder("Jon","Bravo","",      new Date(05,05,1997),10,team4,80,75,90,95,15,25,10,10,75,60),
                               new Attacker("Bruno","Romero","",     new Date(04,22,1999),11,team4,75,90,85,70,15,20,10,10,75,75) };
 
+      // set current date
       Date today = new Date(6,25,2018);
 
       for (int x = 0; x < m_players1.length; x++) {
+         // calculate age for every player
          if(!(m_players1[x].calculateAge(today)))
             System.err.println("Error with calculating age");
 
+         // sign players to contract
          if(!(m_players1[x].signContract(5,10)))
             System.err.println("Error signing contract");
 
+         // add players to club team
          if(!(team1.addPlayer(m_players1[x])))
             System.err.println("Error adding player to team");
       }
@@ -59,6 +65,7 @@ public class Test {
             System.err.println("Error adding player to team");
       }
 
+      // to test, get nationality of first player on each club team
       System.out.println((team1.getPlayers())[0].getFullName() + " is " + (team1.getPlayers())[0].getNationality());
       System.out.println((team2.getPlayers())[0].getFullName() + " is " + (team2.getPlayers())[0].getNationality());
    }
