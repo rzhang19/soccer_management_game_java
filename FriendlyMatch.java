@@ -40,14 +40,4 @@ public class FriendlyMatch extends Match {
    public boolean playMatch() {
       return this.playNinetyMinutes() && this.processMatch();
    }
-
-   /*
-    * processMatch();
-    * Processes results of match by calling processMatch() from Match parent class
-    *
-    * @return - boolean, true if successfully processes this Friendly Match for both Teams
-    */
-   protected boolean processMatch() {
-      return this.getTeam1().processMatch(this) && this.getTeam2().processMatch(this);
-   }
 }
