@@ -3,7 +3,7 @@
  * Robin Zhang, 2018
  * Soccer Management Game, Java
  *
- * Abstract Team object holds all values for a generic football team
+ * Abstract Team class holds all values for a generic football team
  */
 
 public abstract class Team {

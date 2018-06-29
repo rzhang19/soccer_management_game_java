@@ -103,6 +103,15 @@ public class Date {
    }
 
    /*
+    * isValidDate(Date);
+    * Checks if Date is valid
+    * Calls other static method with integer values for month, day, year
+    */
+   public static boolean isValidDate(Date checkMe) {
+      return Date.isValidDate(checkMe.getMonth(), checkMe.getDay(), checkMe.getYear());
+   }
+
+   /*
     * isValidDate(int,int,int);
     * Checks if Date formed by int parameters is valid
     *
