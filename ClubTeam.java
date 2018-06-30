@@ -91,8 +91,10 @@ public class ClubTeam extends Team {
     *          false otherwise
     */
    public boolean setLeague(String league) {
-      if (league.length() <= 0)
+      if (league.length() <= 0) {
+         System.err.println("Error, invalid league name");
          return false;
+      }
 
       m_league = league;
       return true;
@@ -142,8 +144,10 @@ public class ClubTeam extends Team {
     *           budgets successfully set
     */
    public boolean setFinancials(int wageBudget, int transferBudget) {
-      if (wageBudget < 0 || transferBudget < 0)
+      if (wageBudget < 0 || transferBudget < 0) {
+         System.err.println("Error, invalid budget");
          return false;
+      }
 
       return setWageBudget(wageBudget) && setTransferBudget(transferBudget);
    }
@@ -157,8 +161,10 @@ public class ClubTeam extends Team {
     *           successfully set
     */
    private boolean setWageBudget(int wageBudget) {
-      if (wageBudget < 0)
+      if (wageBudget < 0) {
+         System.err.println("Error, wage budget must be non-negative!");
          return false;
+      }
 
       m_wageBudget = wageBudget;
       return true;
@@ -174,8 +180,10 @@ public class ClubTeam extends Team {
     */
 
    private boolean setTransferBudget(int transferBudget) {
-      if (transferBudget < 0)
+      if (transferBudget < 0) {
+         System.err.println("Error, transfer budget must be non-negative!");
          return false;
+      }
 
       m_transferBudget = transferBudget;
       return true;
