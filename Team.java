@@ -116,7 +116,8 @@ public abstract class Team {
     * @return - boolean, true if same teams, false otherwise
     */
    public boolean equals(Team other) {
-      return (m_name.equals(FREE_AGENCY) && other.getName().equals(FREE_AGENCY)) ||
+      return (m_name.equals(FREE_AGENCY) &&
+            (other.getName().equals(FREE_AGENCY) || other == null) ||
             (m_id == other.getID());
    }
 
@@ -245,6 +246,7 @@ public abstract class Team {
     * removePlayer(Player);
     * Removes the parameter Player from this Team
     * If Player does not exist in this Team or if at minimum size, do not remove Player
+    * Player set to be null when removed
     *
     * @args (1) - Player to be removed from Team if possible
     * @return - boolean, true if Player successfulled removed from Team, false otherwise
@@ -255,7 +257,7 @@ public abstract class Team {
 
       for (int x = 0; x < m_size; x++) {
          if (m_players[x].equals(removeMe)) {
-            if(!(m_players[x].setClubTeam(new ClubTeam(FREE_AGENCY)) &&
+            if(!(m_players[x].setClubTeam(null) &&
                m_players[x].setContractLength(0) &&
                m_players[x].setWage(0)))
                return false;
