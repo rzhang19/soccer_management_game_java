@@ -38,6 +38,10 @@ public abstract class Match implements Game {
    public static enum MATCH_TYPE { LEAGUE, CUP_GROUP, CUP_KNOCKOUT, FRIENDLY, TWO_LEG_FIRST, TWO_LEG_SECOND };
    private MATCH_TYPE m_type;
 
+   // identification values
+   private static int idCount = 0;
+   private int m_id;
+
    // score values
    private int m_score1;
    private int m_score2;
@@ -96,6 +100,17 @@ public abstract class Match implements Game {
    }
 
    /*
+    * equals(Match);
+    * Checks whether this Match is equal to the parameter Match by comparing IDs
+    *
+    * @args (1) - Match that this Match is being compared to
+    * @return - boolean, true if Matches are same, false otherwise
+    */
+   public boolean equals(Match other) {
+      return m_id == other.getID();
+   }
+
+   /*
     * setTeams(Team,Team);
     * Sets the Teams to the parameter values
     * If any Team is null, it is not set (this allows adding in one team at a time)
@@ -111,6 +126,9 @@ public abstract class Match implements Game {
          m_team1 = team1;
       if (team2 != null)
          m_team2 = team2;
+
+      m_id = idCount;
+      idCount++;
 
       if (!setAttributes()) {
          System.err.println("Error setting attributes");
@@ -157,6 +175,16 @@ public abstract class Match implements Game {
       }
 
       return true;
+   }
+
+   /*
+    * getID();
+    * Returns the ID of this Match
+    *
+    * @return - int, ID of this Match
+    */
+   public int getID() {
+      return m_id;
    }
 
    /*

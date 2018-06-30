@@ -42,6 +42,33 @@ public class Date {
    }
 
    /*
+    * equals(int,int,int);
+    * Checks whether this Date is equal to the Date formed by the parameters month,
+    * day, year by comparing values
+    *
+    * @args (1) - month value of Date that this Date is being compared to
+    * @args (2) - day value of Date that this Date is being compared to
+    * @args (3) - year value of Date that this Date is being compared to
+    * @return - boolean, true if Dates are same, false otherwise
+    */
+   public boolean equals(int month, int day, int year) {
+      return m_month == month && m_day == day && m_year == year;
+   }
+
+   /*
+    * equals(Date);
+    * Checks whether this Date is equal to the parameter Date by comparing each
+    * month, day, and year
+    * Calls the other equals function defined by comparing individual values
+    *
+    * @args (1) - Date that this Date is being compared to
+    * @return - boolean, true if Dates are same, false otherwise
+    */
+   public boolean equals(Date other) {
+      return equals(other.getMonth(), other.getDay(), other.getYear());
+   }
+
+   /*
     * setDate(int,int,int);
     * Sets a new Date to the parameters
     * @args (1) - int containing month value, to be stored in m_month
