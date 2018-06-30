@@ -227,7 +227,7 @@ public abstract class Team {
     */
    public boolean addPlayer(Player addMe) {
       if (m_size >= MAX_PLAYERS) {
-         System.err.println("Error adding player, at maximum capacity already");
+         System.err.println("Error adding player, Team already at maximum capacity");
          return false;
       }
 

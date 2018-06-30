@@ -11,6 +11,7 @@ public class League {
    private static final int HIGHEST_LEVEL = 1;
    private static final int MINIMUM_PROMOTED = 0;
    private static final int MINIMUM_RELEGATED = 0;
+   private static final int MINIMUM_SIZE = 2;
 
    // static ID counter
    private static int idCount = 0;
@@ -31,6 +32,8 @@ public class League {
 
    // current teams
    private Team[] m_teams;
+   private int m_size;
+   private int m_maxSize;
 
    /*
     * League();
@@ -70,20 +73,31 @@ public class League {
 
    /*
     * League(String,String,int,int,int);
+    * Constructor
+    * Delegates construction up one level
+    */
+   public League(String name, String continent, int level, int numPromoted, int numRelegated) {
+      this(name, continent, level, numPromoted, numRelegated, MINIMUM_SIZE);
+   }
+
+   /*
+    * League(String,String,int,int,int,int);
     * Main constructor
     * Sets all values to parameters, if possible
     * Sets other values to default values
     * Sets ID value
     */
-   public League(String name, String continent, int level, int numPromoted, int numRelegated) {
+   public League(String name, String continent, int level, int numPromoted, int numRelegated, int maxSize) {
       m_name = name;
       m_continent = continent;
       m_level = level;
       m_numPromoted = numPromoted;
       m_numRelegated = numRelegated;
+      m_maxSize = maxSize;
 
       m_promotionPlayoff = false;
       m_relegationPlayoff = false;
+      m_size = 0;
 
       m_id = idCount;
       idCount++;
@@ -315,6 +329,42 @@ public class League {
    }
 
    /*
+    * addTeam(Team);
+    * Adds the parameter Team to the League, if possible
+    * Cannot add if already at maximum size, or if Team already exists in League
+    */
+   public boolean addTeam(Team addMe) {
+      if (m_size >= m_maxSize) {
+         System.err.println("Error adding Team, League already at maximum capacity");
+         return false;
+      }
+
+      if (findTeam(addMe)) {
+         System.err.println("Error adding Team, already exists in League");
+      }
+
+      m_teams[m_size] = addMe;
+      m_size++;
+      return true;
+   }
+
+   /*
+    * findTeam(Team);
+    * Finds if the parameter Team exists in this League
+    *
+    * @args (1) - Team to be found in this League
+    * @return - boolean, true if Team exists in this League, false otherwise
+    */
+   public boolean findTeam(Team findMe) {
+      for (int x = 0; x < m_size; x++) {
+         if (m_teams[x].equals(findMe))
+            return true;
+      }
+
+      return false;
+   }
+
+   /*
     * getTeams();
     * Returns the Teams in this League
     *
@@ -322,5 +372,43 @@ public class League {
     */
    public Team[] getTeams() {
       return m_teams;
+   }
+
+   /*
+    * getSize();
+    * Return the current size of the League
+    * Note: This is not the maximum, fixed size of the League
+    *
+    * @return - int, current size of League
+    */
+   public int getSize() {
+      return m_size;
+   }
+
+   /*
+    * setMaximumSize(int);
+    * Sets the maximum size of the League, maxSize > 1
+    *
+    * @args (1) - int containing maximum size of the League
+    * @return - boolean, true if maximum size set successfully, false otherwise
+    */
+   public boolean setMaximumSize(int maxSize) {
+      if (maxSize < MINIMUM_SIZE) {
+         System.err.println("Error, size not set");
+         return false;
+      }
+
+      m_maxSize = maxSize;
+      return true;
+   }
+
+   /*
+    * getMaximumSize();
+    * Return the maximum size of the League
+    *
+    * @return - int, maximum size of League
+    */
+   public int getMaximumSize() {
+      return m_maxSize;
    }
 }
