@@ -365,6 +365,33 @@ public class League {
    }
 
    /*
+    * removeTeam(Team);
+    * Removes the parameter Team from this League
+    * Team must exist in League
+    *
+    * @args (1) - Team to be removed
+    * @return - boolean, true if Team successfully removed, false otherwise
+    */
+   public boolean removeTeam(Team removeMe) {
+      if (!findTeam(removeMe)) {
+         System.err.println("Error removing team, cannot find team in league");
+         return false;
+      }
+
+      for (int x = 0; x < m_size; x++) {
+         if (m_teams[x].equals(removeMe)) {
+            for (int y = x; y < m_size - 1; y++) {
+               m_teams[y] = m_teams[y + 1];
+            }
+
+            m_teams[m_size] = null;
+
+            return true;
+         }
+      }
+   }
+
+   /*
     * getTeams();
     * Returns the Teams in this League
     *
