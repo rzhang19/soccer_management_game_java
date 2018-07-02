@@ -9,7 +9,7 @@
 public class ClubTeam extends Team {
    // String representation of league
    // when added League.java, will change this to League instance
-   private String m_league;
+   private League m_league;
 
    // financials, transfer and wage budgets
    private int m_transferBudget;
@@ -83,16 +83,16 @@ public class ClubTeam extends Team {
    }
 
    /*
-    * setLeague(String);
-    * Sets the league of the ClubTeam to the argument
+    * setLeague(League);
+    * Sets the league of the ClubTeam to the parameter
     *
-    * @args (1) - String league contains value for m_league, must be length > 0
-    * @return - boolean, true if league is valid string and m_league set successfully,
+    * @args (1) - League league contains value for m_league, must not be null
+    * @return - boolean, true if league is not null and m_league set successfully,
     *          false otherwise
     */
-   public boolean setLeague(String league) {
-      if (league.length() <= 0) {
-         System.err.println("Error, invalid league name");
+   public boolean setLeague(League league) {
+      if (league == null) {
+         System.err.println("Error, invalid league");
          return false;
       }
 
@@ -102,12 +102,20 @@ public class ClubTeam extends Team {
 
    /*
     * getLeague();
-    * returns the name of the league of the ClubTeam
+    * Returns the League of this ClubTeam
     *
     * @return - String, returns m_league
     */
-   public String getLeague() {
+   public League getLeague() {
       return m_league;
+   }
+
+   /*
+    * getLeagueName();
+    * Returns the name of the League of this ClubTeam
+    */
+   public String getLeagueName() {
+      return m_league.getName();
    }
 
    /*
