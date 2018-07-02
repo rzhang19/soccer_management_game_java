@@ -7,6 +7,11 @@
  */
 
 public abstract class Team {
+   // default values
+   private static final String DEFAULT_NAME = "";
+   private static final String DEFAULT_CODE = "";
+   private static final String DEFAULT_CONTINENT = "";
+
    // static ID counter
    private static int idCount = 0;
 
@@ -52,7 +57,7 @@ public abstract class Team {
     * Delegates construction up one level
     */
    public Team() {
-      this("");
+      this(DEFAULT_NAME);
    }
 
    /*
@@ -61,7 +66,7 @@ public abstract class Team {
     * Delegates construction up one level
     */
    public Team(String name) {
-      this(name, "");
+      this(name, DEFAULT_CODE);
    }
 
    /*
@@ -70,7 +75,7 @@ public abstract class Team {
     * Delegates construction up one level
     */
    public Team(String name, String code) {
-      this(name, code, "");
+      this(name, code, DEFAULT_CONTINENT);
    }
 
    /*

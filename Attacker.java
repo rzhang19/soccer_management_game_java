@@ -29,7 +29,8 @@ public class Attacker extends Player {
     * Delegates construction up one level
     */
    public Attacker() {
-      this("", "", "", new Date(), 0, new NationalTeam());
+      this(Player.DEFAULT_FIRST_NAME, Player.DEFAULT_LAST_NAME, Player.DEFAULT_NICK_NAME,
+         new Date(), Player.DEFAULT_JERSEY_NUM, new NationalTeam());
    }
 
    /*

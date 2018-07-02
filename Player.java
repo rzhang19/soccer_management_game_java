@@ -7,6 +7,12 @@
  */
 
 public abstract class Player {
+   // default values
+   public static final String DEFAULT_FIRST_NAME = "";
+   public static final String DEFAULT_LAST_NAME = "";
+   public static final String DEFAULT_NICK_NAME = "";
+   public static final int DEFAULT_JERSEY_NUM = 0;
+
    // static ID counter
    private static int id_count = 0;
 
