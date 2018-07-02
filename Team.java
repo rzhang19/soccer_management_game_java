@@ -12,6 +12,21 @@ public abstract class Team {
    private static final String DEFAULT_CODE = "";
    private static final String DEFAULT_CONTINENT = "";
 
+   // initial values
+   private static final int INITIAL_SIZE = 0;
+   private static final int INITIAL_OVERALL = -1;
+   private static final int INITIAL_ATTACK = -1;
+   private static final int INITIAL_MIDFIELD = -1;
+   private static final int INITIAL_DEFENSE = -1;
+   private static final int INITIAL_GK = -1;
+
+   private static final int INITIAL_TOTAL_WINS = 0;
+   private static final int INITIAL_TOTAL_DRAWS = 0;
+   private static final int INITIAL_TOTAL_LOSSES = 0;
+   private static final int INITIAL_TOTAL_CUP_WINS = 0;
+   private static final int INITIAL_TOTAL_GOALS_FOR = 0;
+   private static final int INITIAL_TOTAL_GOALS_AGAINST = 0;
+
    // static ID counter
    private static int idCount = 0;
 
@@ -94,20 +109,20 @@ public abstract class Team {
       m_id = idCount;
       idCount++;
 
-      m_size = 0;
+      m_size = INITIAL_SIZE;
 
-      m_overall = -1;
-      m_attack = -1;
-      m_midfield = -1;
-      m_defense = -1;
-      m_gk = -1;
+      m_overall = INITIAL_OVERALL;
+      m_attack = INITIAL_ATTACK;
+      m_midfield = INITIAL_MIDFIELD;
+      m_defense = INITIAL_DEFENSE;
+      m_gk = INITIAL_GK;
 
-      m_totalWins = 0;
-      m_totalDraws = 0;
-      m_totalLosses = 0;
-      m_totalCupWins = 0;
-      m_totalGoalsFor = 0;
-      m_totalGoalsAgainst = 0;
+      m_totalWins = INITIAL_TOTAL_WINS;
+      m_totalDraws = INITIAL_TOTAL_DRAWS;
+      m_totalLosses = INITIAL_TOTAL_LOSSES;
+      m_totalCupWins = INITIAL_TOTAL_CUP_WINS;
+      m_totalGoalsFor = INITIAL_TOTAL_GOALS_FOR;
+      m_totalGoalsAgainst = INITIAL_TOTAL_GOALS_AGAINST;
    }
 
    /*

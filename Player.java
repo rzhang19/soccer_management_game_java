@@ -13,6 +13,12 @@ public abstract class Player {
    public static final String DEFAULT_NICK_NAME = "";
    public static final int DEFAULT_JERSEY_NUM = 0;
 
+   // initial values
+   private static final int INITIAL_AGE = -1;
+   private static final int INITIAL_WAGE = 0;
+   private static final int INITIAL_CONTRACT_LENGTH = 0;
+   private static final Team INITIAL_TEAM = null;
+
    // static ID counter
    private static int id_count = 0;
 
@@ -68,7 +74,8 @@ public abstract class Player {
     * Delegates construction up one level
     */
    public Player() {
-      this("", "", "", new Date(), 0, new NationalTeam());
+      this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, DEFAULT_NICK_NAME,
+         new Date(), DEFAULT_JERSEY_NUM, new NationalTeam());
    }
 
    /*
@@ -79,7 +86,10 @@ public abstract class Player {
    public Player(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
       this(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE);
    }
 
    /*
@@ -102,10 +112,10 @@ public abstract class Player {
       m_jerseyNum = jerseyNum;
       m_nationalTeam = nationalTeam;
 
-      m_age = -1;
-      m_wage = 0;
-      m_contractLength = 0;
-      m_clubTeam = null;
+      m_age = INITIAL_AGE;
+      m_wage = INITIAL_WAGE;
+      m_contractLength = INITIAL_CONTRACT_LENGTH;
+      m_clubTeam = INITIAL_TEAM;
 
       m_shooting = shooting;
       m_anticipation = anticipation;

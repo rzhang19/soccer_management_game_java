@@ -12,6 +12,14 @@ public abstract class Match implements Game {
    // random number generator for Match simulation
    public static Random rand = new Random();
 
+   // default variables
+   private static final boolean DEFAULT_COMMENTARY = false;
+   private static final int DEFAULT_ATTRIBUTE = -1;
+
+   // initial variables
+   private static final int INITIAL_SCORES = 0;
+   private static final int INITIAL_PENALITIES = 0;
+
    // goal counts as one point
    private static final int GOAL = 1;
 
@@ -85,14 +93,14 @@ public abstract class Match implements Game {
     * or -1 if respective Team is null
     */
    public Match(Team team1, Team team2) {
-      m_score1 = 0;
-      m_score2 = 0;
-      m_penalties1 = 0;
-      m_penalties2 = 0;
+      m_score1 = INITIAL_SCORES;
+      m_score2 = INITIAL_SCORES;
+      m_penalties1 = INITIAL_PENALITIES;
+      m_penalties2 = INITIAL_PENALITIES;
       m_team1 = team1;
       m_team2 = team2;
 
-      m_printCommentary = false;
+      m_printCommentary = DEFAULT_COMMENTARY;
 
       if (!setAttributes()) {
          System.err.println("Error with setting attributes");
@@ -154,10 +162,10 @@ public abstract class Match implements Game {
       }
 
       else {
-         m_attack1 = -1;
-         m_midfield1 = -1;
-         m_defense1 = -1;
-         m_gk1 = -1;
+         m_attack1 = DEFAULT_ATTRIBUTE;
+         m_midfield1 = DEFAULT_ATTRIBUTE;
+         m_defense1 = DEFAULT_ATTRIBUTE;
+         m_gk1 = DEFAULT_ATTRIBUTE;
       }
 
       if (m_team2 != null) {
@@ -168,10 +176,10 @@ public abstract class Match implements Game {
       }
 
       else {
-         m_attack2 = -1;
-         m_midfield2 = -1;
-         m_defense2 = -1;
-         m_gk2 = -1;
+         m_attack2 = DEFAULT_ATTRIBUTE;
+         m_midfield2 = DEFAULT_ATTRIBUTE;
+         m_defense2 = DEFAULT_ATTRIBUTE;
+         m_gk2 = DEFAULT_ATTRIBUTE;
       }
 
       return true;

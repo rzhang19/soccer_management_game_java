@@ -13,6 +13,11 @@ public class League {
    private static final int DEFAULT_LEVEL = 0;
    private static final int DEFAULT_NUM_PROMOTED = 0;
    private static final int DEFAULT_NUM_RELEGATED = 0;
+   private static final boolean DEFAULT_PROMOTED_PLAYOFF = false;
+   private static final boolean DEFAULT_RELEGATED_PLAYOFF = false
+
+   // initial variables
+   private static final int INITIAL_SIZE = 0;
 
    // constant variables for League
    private static final int HIGHEST_LEVEL = 1;
@@ -102,9 +107,9 @@ public class League {
       m_numRelegated = numRelegated;
       m_maxSize = maxSize;
 
-      m_promotionPlayoff = false;
-      m_relegationPlayoff = false;
-      m_size = 0;
+      m_promotionPlayoff = DEFAULT_PROMOTED_PLAYOFF;
+      m_relegationPlayoff = DEFAULT_RELEGATED_PLAYOFF;
+      m_size = INITIAL_SIZE;
 
       m_id = idCount;
       idCount++;
