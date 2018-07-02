@@ -9,6 +9,10 @@ public class Cup {
    // static ID counter
    private static int idCount = 0;
 
+   // static limit constants
+   private static final int MINIMUM_KNOCKOUT_TEAMS = 2;
+   private static final int MINIMUM_GROUP_TEAMS = 3;
+
    // other static constants
    private static final boolean DEFAULT_GROUPS = false;
    private static final boolean DEFAULT_TWO_LEGS = false;
@@ -84,6 +88,11 @@ public class Cup {
       else {
          m_numKnockoutTeams = DEFAULT_NUM_KNOCKOUT;
       }
+
+      m_totalMatches = 0;
+      if (!calculateTotalMatches()) {
+         System.err.println("Error, failed to calculate total matches");
+      }
    }
 
    public Cup(String name, boolean twoLegs, boolean thirdPlace, boolean groups,
@@ -114,18 +123,44 @@ public class Cup {
       m_groupSize = groupSize;
       m_groupTimesPlay = groupTimesPlay;
       m_qualifyFromGroups = qualifyFromGroups;
+
+      m_totalMatches = 0;
+      if (!calculateTotalMatches()) {
+         System.err.println("Error, failed to calculate total matches");
+      }
    }
 
    private boolean calculateTotalMatches() {
+      if (groups) {
+         m_totalMatches += m_numGroups * (m_groupSize * (m_groupSize - 1) * m_groupTimesPlay / 2);
+      }
 
+      m_totalMatches += m_numGroups * m_qualifyFromGroups;
+
+      if (!m_thirdPlace)
+         m_totalMatches--;
+
+      return true;
    }
 
    public boolean setNumKnockoutTeams(int numKnockoutTeams) {
+      if (numKnockoutTeams < MINIMUM_KNOCKOUT_TEAMS) {
+         System.err.println("Error, invalid number of knockout teams");
+         return false;
+      }
 
+      m_numKnockoutTeams = numKnockoutTeams;
+      return true;
    }
 
-   public boolean setName() {
+   public boolean setName(String name) {
+      if (name.length() <= 0) {
+         System.err.println("Error, invalid name to set");
+         return false;
+      }
 
+      m_name = name;
+      return true;
    }
 
    public String getName() {
