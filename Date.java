@@ -7,6 +7,11 @@
  */
 
 public class Date {
+   // default date variables
+   private static final int DEFAULT_MONTH = 1;
+   private static final int DEFAULT_DAY = 1;
+   private static final int DEFAULT_YEAR = 1970;
+
    // base variables - month, day, year
    private int m_month;
    private int m_day;
@@ -18,7 +23,7 @@ public class Date {
     * Sets default date to January 1, 1970, Unix Epoch time
     */
    public Date() {
-      this(1, 1, 1970);
+      this(DEFAULT_MONTH, DEFAULT_DAY, DEFAULT_YEAR);
    }
 
    /*
@@ -35,9 +40,9 @@ public class Date {
 
       else {
          System.err.println("Invalid Date constructed, resetting to defaults");
-         m_month = 1;
-         m_day = 1;
-         m_year = 1;
+         m_month = DEFAULT_MONTH;
+         m_day = DEFAULT_DAY;
+         m_year = DEFAULT_YEAR;
       }
    }
 
