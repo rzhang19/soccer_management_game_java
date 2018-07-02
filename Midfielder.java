@@ -40,7 +40,10 @@ public class Midfielder extends Player {
    public Midfielder(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
       this(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE);
    }
 
    /*

@@ -14,8 +14,8 @@ public class Goalkeeper extends Player {
    private static final int PAS_WEIGHT = 3;  // passing weight
    private static final int TAC_WEIGHT = 2;  // tackling weight
    private static final int INT_WEIGHT = 1;  // interceptions weight
-   private static final int GKR_WEIGHT = 5;  // goalkeeper reactions weight
-   private static final int GKB_WEIGHT = 5;  // goalkeeper blocking weight
+   private static final int GKR_WEIGHT = 5;  // goalkeeping reactions weight
+   private static final int GKB_WEIGHT = 5;  // goalkeeping blocking weight
    private static final int SPE_WEIGHT = 1;  // speed weight
    private static final int STA_WEIGHT = 1;  // stamina weight
 
@@ -40,7 +40,10 @@ public class Goalkeeper extends Player {
    public Goalkeeper(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
       this(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE);
    }
 
    /*

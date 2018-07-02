@@ -10,6 +10,9 @@ public abstract class Player {
    // static ID counter
    private static int id_count = 0;
 
+   // default attribute values
+   public static final int DEFAULT_ATTRIBUTE = -1;
+
    // constant values
    private static final int MIN_JERSEY = 0;
    private static final int MAX_JERSEY = 99;

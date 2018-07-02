@@ -40,7 +40,10 @@ public class Attacker extends Player {
    public Attacker(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
       this(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE);
    }
 
    /*
@@ -70,9 +73,9 @@ public class Attacker extends Player {
 
    /*
     * calculateOverall();
-    * @return - boolean, true if successfully sets overall, false otherwise
-    *
     * Overrides abstract method from Player parent class.
+    *
+    * @return - boolean, true if successfully sets overall, false otherwise
     */
    protected boolean calculateOverall() {
       if(!this.setOverall(SHO_WEIGHT * this.getShooting() + ANT_WEIGHT * this.getAnticipation() + BCT_WEIGHT * this.getBallControl() + PAS_WEIGHT * this.getPassing() +

@@ -14,8 +14,8 @@ public class Defender extends Player {
    private static final int PAS_WEIGHT = 3;  // passing weight
    private static final int TAC_WEIGHT = 5;  // tackling weight
    private static final int INT_WEIGHT = 5;  // interceptions weight
-   private static final int GKR_WEIGHT = 1;  // goalkeeper reactions weight
-   private static final int GKB_WEIGHT = 1;  // goalkeeper blocking weight
+   private static final int GKR_WEIGHT = 1;  // goalkeeping reactions weight
+   private static final int GKB_WEIGHT = 1;  // goalkeeping blocking weight
    private static final int SPE_WEIGHT = 2;  // speed weight
    private static final int STA_WEIGHT = 3;  // stamina weight
 
@@ -40,7 +40,10 @@ public class Defender extends Player {
    public Defender(String firstName, String lastName, String nickName, Date birthday,
                   int jerseyNum, Team nationalTeam) {
       this(firstName, lastName, nickName, birthday, jerseyNum, nationalTeam,
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE, Player.DEFAULT_ATTRIBUTE,
+         Player.DEFAULT_ATTRIBUTE);
    }
 
    /*
@@ -70,9 +73,9 @@ public class Defender extends Player {
 
    /*
     * calculateOverall();
-    * @return - boolean, true if successfully sets overall, false otherwise
-    *
     * Overrides abstract method from Player parent class.
+    *
+    * @return - boolean, true if successfully sets overall, false otherwise
     */
    protected boolean calculateOverall() {
       if(!this.setOverall(SHO_WEIGHT * this.getShooting() + ANT_WEIGHT * this.getAnticipation() + BCT_WEIGHT * this.getBallControl() + PAS_WEIGHT * this.getPassing() +
