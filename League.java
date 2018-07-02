@@ -7,6 +7,13 @@
  */
 
 public class League {
+   // default variables
+   private static final String DEFAULT_NAME = "";
+   private static final String DEFAULT_CONTINENT = "";
+   private static final int DEFAULT_LEVEL = 0;
+   private static final int DEFAULT_NUM_PROMOTED = 0;
+   private static final int DEFAULT_NUM_RELEGATED = 0;
+
    // constant variables for League
    private static final int HIGHEST_LEVEL = 1;
    private static final int MINIMUM_PROMOTED = 0;
@@ -41,7 +48,7 @@ public class League {
     * Delegates construction up one level
     */
    public League() {
-      this("");
+      this(DEFAULT_NAME);
    }
 
    /*
@@ -50,7 +57,7 @@ public class League {
     * Delegates construction up one level
     */
    public League(String name) {
-      this(name, "");
+      this(name, DEFAULT_CONTINENT);
    }
 
    /*
@@ -59,7 +66,7 @@ public class League {
     * Delegates construction up one level
     */
    public League(String name, String continent) {
-      this(name, continent, 0);
+      this(name, continent, DEFAULT_LEVEL);
    }
 
    /*
@@ -68,7 +75,7 @@ public class League {
     * Delegates construction up one level
     */
    public League(String name, String continent, int level) {
-      this(name, continent, level, 0, 0);
+      this(name, continent, level, DEFAULT_NUM_PROMOTED, DEFAULT_NUM_RELEGATED);
    }
 
    /*
@@ -280,7 +287,7 @@ public class League {
     * false otherwise
     */
    public boolean setPromotionPlayoff(boolean promotionPlayoff) {
-      if (m_numPromoted <= 0 && promotionPlayoff) {
+      if (m_numPromoted <= MINIMUM_PROMOTED && promotionPlayoff) {
          System.err.println("Error, cannot set promotion playoffs with zero promoted");
          return false;
       }
@@ -309,7 +316,7 @@ public class League {
     * false otherwise
     */
    public boolean setRelegationPlayoff(boolean relegationPlayoff) {
-      if (m_numRelegated <= 0) {
+      if (m_numRelegated <= MINIMUM_RELEGATED && relegationPlayoff) {
          System.err.println("Error, cannot set relegation playoffs with zero relegated");
          return false;
       }

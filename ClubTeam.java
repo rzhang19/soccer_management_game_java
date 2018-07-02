@@ -7,8 +7,25 @@
  */
 
 public class ClubTeam extends Team {
-   // String representation of league
-   // when added League.java, will change this to League instance
+   // default values
+   private static final String DEFAULT_NAME = "";
+   private static final String DEFAULT_CODE = "";
+   private static final String DEFAULT_LEAGUE = "";
+   private static final String DEFAULT_CONTINENT = "";
+   private static final int DEFAULT_WAGE_BUDGET = 0;
+   private static final int DEFAULT_TRANSFER_BUDGET = 0;
+   private static final int INITIAL_LEAGUE_WINS = 0;
+   private static final int INITIAL_LEAGUE_DRAWS = 0;
+   private static final int INITIAL_LEAGUE_LOSSES = 0;
+   private static final int INITIAL_LEAGUE_POINTS = 0;
+   private static final int INITIAL_LEAGUE_GOALS_FOR = 0;
+   private static final int INITIAL_LEAGUE_GOALS_AGAINST = 0;
+
+   // constraint values
+   private static final String MINIMUM_WAGE_BUDGET;
+   private static final String MINIMUM_TRANSFER_BUDGET;
+
+   // League instance this ClubTeam is in
    private League m_league;
 
    // financials, transfer and wage budgets
@@ -29,7 +46,7 @@ public class ClubTeam extends Team {
     * Delegates construction up one level
     */
    public ClubTeam() {
-      this("");
+      this(DEFAULT_NAME);
    }
 
    /*
@@ -38,7 +55,7 @@ public class ClubTeam extends Team {
     * Delegates construction up one level
     */
    public ClubTeam(String name) {
-      this(name, "");
+      this(name, DEFAULT_CODE);
    }
 
    /*
@@ -47,7 +64,7 @@ public class ClubTeam extends Team {
     * Delegates construction up one level
     */
    public ClubTeam(String name, String code) {
-      this(name, code, "");
+      this(name, code, DEFAULT_LEAGUE);
    }
 
    /*
@@ -56,7 +73,7 @@ public class ClubTeam extends Team {
     * Delegates construction up one level
     */
    public ClubTeam(String name, String code, String league) {
-      this(name, code, league, "");
+      this(name, code, league, DEFAULT_CONTINENT);
    }
 
    /*
@@ -71,15 +88,15 @@ public class ClubTeam extends Team {
 
       m_league = league;
 
-      m_transferBudget = -1;
-      m_wageBudget = -1;
+      m_transferBudget = DEFAULT_TRANSFER_BUDGET;
+      m_wageBudget = DEFAULT_WAGE_BUDGET;
 
-      m_leagueWins = 0;
-      m_leagueDraws = 0;
-      m_leagueLosses = 0;
-      m_leaguePoints = 0;
-      m_leagueGoalsFor = 0;
-      m_leagueGoalsAgainst = 0;
+      m_leagueWins = INITIAL_LEAGUE_WINS;
+      m_leagueDraws = INITIAL_LEAGUE_DRAWS;
+      m_leagueLosses = INITIAL_LEAGUE_LOSSES;
+      m_leaguePoints = INITIAL_LEAGUE_POINTS;
+      m_leagueGoalsFor = INITIAL_LEAGUE_GOALS_FOR;
+      m_leagueGoalsAgainst = INITIAL_LEAGUE_GOALS_AGAINST;
    }
 
    /*
@@ -152,7 +169,7 @@ public class ClubTeam extends Team {
     *           budgets successfully set
     */
    public boolean setFinancials(int wageBudget, int transferBudget) {
-      if (wageBudget < 0 || transferBudget < 0) {
+      if (wageBudget < MINIMUM_WAGE_BUDGET || transferBudget < MINIMUM_TRANSFER_BUDGET) {
          System.err.println("Error, invalid budget");
          return false;
       }
@@ -169,7 +186,7 @@ public class ClubTeam extends Team {
     *           successfully set
     */
    private boolean setWageBudget(int wageBudget) {
-      if (wageBudget < 0) {
+      if (wageBudget < MINIMUM_WAGE_BUDGET) {
          System.err.println("Error, wage budget must be non-negative!");
          return false;
       }
@@ -188,7 +205,7 @@ public class ClubTeam extends Team {
     */
 
    private boolean setTransferBudget(int transferBudget) {
-      if (transferBudget < 0) {
+      if (transferBudget < MINIMUM_TRANSFER_BUDGET) {
          System.err.println("Error, transfer budget must be non-negative!");
          return false;
       }
