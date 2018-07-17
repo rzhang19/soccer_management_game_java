@@ -19,6 +19,7 @@ public abstract class Match implements Game {
    // initial variables
    private static final int INITIAL_SCORES = 0;
    private static final int INITIAL_PENALITIES = 0;
+   private static final int INITIAL_PLAYED = false;
 
    // goal counts as one point
    private static final int GOAL = 1;
@@ -49,6 +50,9 @@ public abstract class Match implements Game {
    // identification values
    private static int idCount = 0;
    private int m_id;
+
+   // whether the match has been played yet
+   private boolean m_played;
 
    // score values
    private int m_score1;
@@ -99,6 +103,8 @@ public abstract class Match implements Game {
       m_penalties2 = INITIAL_PENALITIES;
       m_team1 = team1;
       m_team2 = team2;
+
+      m_played = INITIAL_PLAYED;
 
       m_printCommentary = DEFAULT_COMMENTARY;
 
