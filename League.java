@@ -14,7 +14,10 @@ public class League {
    private static final int DEFAULT_NUM_PROMOTED = 0;
    private static final int DEFAULT_NUM_RELEGATED = 0;
    private static final boolean DEFAULT_PROMOTED_PLAYOFF = false;
-   private static final boolean DEFAULT_RELEGATED_PLAYOFF = false
+   private static final boolean DEFAULT_RELEGATED_PLAYOFF = false;
+   private static final int DEFAULT_NUM_PLAYED = 2;
+   private static final boolean DEFAULT_RANDOM = true;
+   private static final int DEFAULT_WEIGHT_WEEK = 0;
 
    // initial variables
    private static final int INITIAL_SIZE = 0;
@@ -24,6 +27,7 @@ public class League {
    private static final int MINIMUM_PROMOTED = 0;
    private static final int MINIMUM_RELEGATED = 0;
    private static final int MINIMUM_SIZE = 2;
+   private static final int MINIMUM_NAME_LENGTH = 1;
 
    // static ID counter
    private static int idCount = 0;
@@ -46,6 +50,12 @@ public class League {
    private Team[] m_teams;
    private int m_size;
    private int m_maxSize;
+
+   // matches information
+   private LeagueMatch[] m_matches;
+   private int m_numTotalMatches;
+   private int m_currentNumMatches;
+   private int m_currentWeek;
 
    /*
     * League();
@@ -113,6 +123,8 @@ public class League {
 
       m_id = idCount;
       idCount++;
+
+      m_teams = new Team[maxSize];
    }
 
    /*
@@ -135,7 +147,7 @@ public class League {
     * @return - boolean, true if name is set successfully, false otherwise
     */
    public boolean setName(String name) {
-      if (name.length() <= 0) {
+      if (name.length() < MINIMUM_NAME_LENGTH) {
          System.err.println("Error, name cannot be empty");
          return false;
       }
@@ -172,7 +184,7 @@ public class League {
     * @return - boolean, true if continent successfully, false otherwise
     */
    public boolean setContinent(String continent) {
-      if (continent.length() <= 0) {
+      if (continent.length() < MINIMUM_NAME_LENGTH) {
          System.err.println("Error, continent cannot be empty");
          return false;
       }
@@ -449,5 +461,102 @@ public class League {
     */
    public int getMaximumSize() {
       return m_maxSize;
+   }
+
+   /*
+    * generateSchedule();
+    *
+    * Creates a schedule using the Round Robin tournament structure
+    * Calls the more specific overloaded version of this method
+    */
+   public boolean generateSchedule() {
+      return generateSchedule(DEFAULT_NUM_PLAYED);
+   }
+
+   /*
+    * generateSchedule(int);
+    *
+    * Creates a schedule using the Round Robin tournament structure
+    * Calls the more specific, overloaded version of this method
+    */
+   public boolean generateSchedule(int numPlayed) {
+      return generateSchedule(DEFAULT_NUM_PLAYED, DEFAULT_RANDOM, DEFAULT_WEIGHT_WEEK);
+   }
+
+   /*
+    * generateSchedule(int,boolean,int);
+    *
+    * Creates a schedule using the Round Robin tournament structure
+    * Currently does not implement any additional settings
+    */
+   public boolean generateSchedule(int numPlayed, boolean random, int weightWeek) {
+      if (random && weightWeek != DEFAULT_WEIGHT_WEEK) {
+         System.err.println("Error, can't be both random and have weighted week");
+         return false;
+      }
+
+      if (m_size != m_maxSize) {
+         System.err.println("Error, league Teams not fully established");
+         return false;
+      }
+
+      m_matches = new Match[m_size * (m_size - 1) / 2];
+
+      Team tempTeam1 = m_teams[0];
+      Team tempTeam2 = m_teams[1];
+
+      boolean finished = false;
+
+      boolean evenTeams = m_maxSize % 2 == 0 ? true : false;
+      int evenSize = evenTeams ? m_maxSize : m_maxSize + 1;
+
+      if (evenSize < 2) {
+         System.err.println("Error, not enough Teams to create a League");
+         return false;
+      }
+
+      Team[] m_tempTeams = new Team[evenSize];
+
+      for (int x = 0; x < m_maxSize; x++) {
+         m_tempTeams[x] = m_teams[x];
+      }
+
+      m_tempTeams[evenSize - 1] = null;
+
+      int week = 1;
+      int count = 0;
+
+      while (!finished) {
+         for (int x = 0; x < evenSize; x += 2) {
+            if (!(!evenTeams && (m_tempTeams[x] == null || m_tempTeams[x + 1] == null))) {
+               m_matches[count] = new Match(m_tempTeams[x], m_tempTeams[x + 1], week);
+               count++;
+            }
+         }
+
+         Team temp = m_tempTeams[evenSize - 1];
+
+         if (evenSize > 2) {
+            for (int x = evenSize - 1; x > 2; x -= 2) {
+               m_tempTeams[x] = m_tempTeams[x - 2];
+            }
+
+            m_tempTeams[1] = m_tempTeams[2];
+
+            for (int x = 2; x < evenSize - 2; x += 2) {
+               mtempTeams[x] = m_tempTeams[x + 2];
+            }
+
+            m_tempTeams[evenSize - 2] = temp;
+         }
+
+         if ((m_tempTeams[0].equals(tempTeam1) && m_tempTeams[1].equals(tempTeam2)) || (m_tempTeams[0].equals(tempTeam2) & m_tempTeams[1].equals(tempTeam1))) {
+            finished = true;
+         }
+
+         week++;
+      }
+
+      return true;
    }
 }
